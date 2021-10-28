@@ -1,0 +1,19 @@
+{
+  "name": "obs-photo-booth",
+  "version": "1.0.0",
+  "description": "photo booth for use with obs virtual camera",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./index.js"
+  },
+  "author": "pjasinski",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "canvas": "^2.8.0",
+    "express": "^4.17.1",
+    "multer": "^1.4.3",
+    "sharp": "^0.29.2",
+    "uuid": "^8.3.2"
+  }
+}

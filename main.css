@@ -1,0 +1,41 @@
+#text {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1.5em;
+    color: white;
+  }
+  #message {
+    font-size: 1.1em;
+  }
+  #countdown {
+    font-family: "Roboto Mono", monospace;
+    font-size: 9em;
+  }
+  #video {    
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  #shutter {
+    opacity: 0;
+    transition: all 500ms ease-in;/* Shutter speed */
+    position: fixed;
+    height: 0%;
+    width: 0%;
+    pointer-events: none;
+  
+    background-color: white;/* Shutter Color */
+    
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%)
+  }
+  #shutter.on {
+    opacity: 1;/* Shutter Transparency */
+    height: 100%;
+    width: 100%;
+  }
