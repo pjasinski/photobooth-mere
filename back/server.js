@@ -2,7 +2,8 @@ const express = require('express');
 const multer = require('multer');
 const sharp = require('sharp');
 const app = express();
-
+const fs = require("fs");
+let imgCounter = 0;
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
     cb(null, './uploads/');
@@ -11,9 +12,10 @@ const storage = multer.diskStorage({
     cb(null, new Date().toISOString() + file.originalname + ".jpg");
   }
 })
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({
-  extended: true
+  extended: true,
+  limit: '50mb'
 }));
 const upload = multer({storage: storage});
 express.urlencoded();
@@ -27,7 +29,14 @@ app.get('/', (req, res)=>{
     res.sendFile("index.html", { root: __dirname + "/public" }) // sendFile needs absolute path, the second parameter helps creating path
 })
 app.post('/img', upload.single('image'),(req, res, next) => {
-  console.log(req.body.img);
+  let base64String = req.body.img;
+  //console.log(base64String + "\n");
+  let base64Image = base64String.split(';base64,').pop();
+  //console.log(base64Image);
+  fs.writeFile('./uploads/image' + imgCounter + '.png', base64Image, {encoding: 'base64'}, function(err) {
+    console.log('File created');
+});
+  imgCounter++;
 })
 const port = process.env.PORT || 5000
 app.listen(port, 
