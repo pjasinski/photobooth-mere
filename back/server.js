@@ -19,7 +19,7 @@ app.use(express.urlencoded({
   limit: '50mb'
 }));
 const corsOptions = {
-  origin:'https://photoboothfiles.patrickjasinski.com/',
+  origin:'https://photobooth.patrickjasinski.com/',
   credentials: true,
   optionSuccessStatus:200
 }
