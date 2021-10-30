@@ -43,7 +43,7 @@ app.post('/', upload.single('image'),(req, res, next) => {
   //console.log(base64String + "\n");
   let base64Image = base64String.split(';base64,').pop();
   //console.log(base64Image);
-  fs.writeFile('./uploads/image' + imgCounter + '.png', base64Image, {encoding: 'base64'}, function(err) {
+  fs.writeFile('./uploads/image' + Math.floor(Date.now() / 1000) + '.png', base64Image, {encoding: 'base64'}, function(err) {
     console.log('File created');
 });
   imgCounter++;
