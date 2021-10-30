@@ -4,6 +4,7 @@ const sharp = require('sharp');
 const app = express();
 const fs = require("fs");
 let imgCounter = 0;
+const cors = require('cors');
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
     cb(null, './uploads/');
@@ -17,6 +18,7 @@ app.use(express.urlencoded({
   extended: true,
   limit: '50mb'
 }));
+app.use(cors());
 const upload = multer({storage: storage});
 express.urlencoded();
 express.json()
