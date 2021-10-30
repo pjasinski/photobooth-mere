@@ -28,7 +28,7 @@ var photoTimer = setInterval(function() {
     $("#message").text("CLICK");    
     $.ajax({
       type: "POST",
-      url: "http://photobooth.patrickjasinski.com:3000/img",
+      url: "https://photobooth.patrickjasinski.com/img",
       data: {img: img},    
     });
   }
