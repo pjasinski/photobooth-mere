@@ -25,10 +25,7 @@ app.use(express.static('./public'))
 app.use(express.static('./uploads/')) // we will store images in this directory
 
 // Note: since static folder public has Index.html in it. This route won't even hit, and the file will be served directly
-app.get('/', (req, res)=>{
-    res.sendFile("index.html", { root: __dirname + "/public" }) // sendFile needs absolute path, the second parameter helps creating path
-})
-app.post('/img', upload.single('image'),(req, res, next) => {
+app.post('/', upload.single('image'),(req, res, next) => {
   let base64String = req.body.img;
   //console.log(base64String + "\n");
   let base64Image = base64String.split(';base64,').pop();
