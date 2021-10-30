@@ -18,12 +18,18 @@ app.use(express.urlencoded({
   extended: true,
   limit: '50mb'
 }));
-const corsOptions = {
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+/*const corsOptions = {
   origin:'https://photobooth.patrickjasinski.com/',
   credentials: true,
   optionSuccessStatus:200
 }
 app.use(cors(corsOptions));
+*/
 const upload = multer({storage: storage});
 express.urlencoded();
 express.json()
